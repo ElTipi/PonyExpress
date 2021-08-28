@@ -2,10 +2,7 @@ package ponyExpress;
 
 public class PonyExpress {
 
-	
-	public PonyExpress() {
-	}
-	
+	private final static int DISTANCIA_MAXIMA = 100;
 	
 	/**
 	 * @param distancias es la distancia en millas de una estación hasta la otra
@@ -15,16 +12,18 @@ public class PonyExpress {
 	
 	public int caballos(int[] distancias) { 
 		
-		int distCaballo = 0; //contabiliza distancia recorrida por caballo
+		int distRecCaballo = 0; //contabiliza distancia recorrida por caballo
 		int cantCaballos = 1; //caballos utilizados en cada recorrido
 		
 		for(int i = 0; i < distancias.length; i++) {
-			distCaballo += distancias[i]; 
-			if (distCaballo > 100) { 
+			distRecCaballo += distancias[i]; 
+			if (distRecCaballo > DISTANCIA_MAXIMA) { 
+				distRecCaballo = distancias[i];
 				cantCaballos++;
-				distCaballo = distancias[i];
+				
 			}
 		}
 		return cantCaballos;
+		
 	}
 }
